@@ -1,9 +1,9 @@
-import { Text } from "react-native";
+import SettingContainer from "@/container/appContainer/settingContainer";
 
 export default function SettingPage() {
   return (
     <>
-      <Text>jdfn</Text>
+      <SettingContainer />
     </>
   );
 }

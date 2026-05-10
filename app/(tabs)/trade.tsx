@@ -1,9 +1,9 @@
-import { Text } from "react-native";
+import TradTabContainer from "@/container/appContainer/TradeContaainer";
 
 export default function TradePage() {
   return (
     <>
-      <Text>jdfn</Text>
+      <TradTabContainer />
     </>
   );
 }

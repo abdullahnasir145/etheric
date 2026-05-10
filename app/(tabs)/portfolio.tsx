@@ -1,9 +1,9 @@
-import { Text } from "react-native";
+import PortfolioContainer from "@/container/appContainer/PortfolioContainer";
 
 export default function PortfolioPage() {
   return (
     <>
-      <Text>jdfn</Text>
+      <PortfolioContainer />
     </>
   );
 }
