@@ -43,7 +43,7 @@ export default function TabLayout() {
                 size={24}
                 name="chart.bar.fill"
                 color={focused ? activeColor : inactiveColor}
-              />{" "}
+              />
             </View>
           ),
           tabBarLabel: ({ focused, children }) => (
