@@ -1,10 +1,10 @@
-import { Text, View } from "react-native";
+import HomeContainer from "@/container/appContainer/HomeContainer";
 import "../../global.css";
 
 export default function HomeScreen() {
   return (
-    <View>
-      <Text className="text-red-500">Hello</Text>
-    </View>
+    <>
+      <HomeContainer />
+    </>
   );
 }
