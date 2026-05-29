@@ -10,7 +10,7 @@ export default function MarketCapRank() {
         colors={[colors.primary, colors.secondary]}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}
-        className="rounded-lg p-5"
+        className="rounded-lg p-5 rounded-lg"
       >
         <View className="flex-row justify-between items-center mb-4">
           <Paragraph className="text-white/80 text-sm font-medium uppercase tracking-wider">

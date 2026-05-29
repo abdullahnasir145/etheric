@@ -1,7 +1,6 @@
 import { TextInput, TextInputProps, View } from "react-native";
 import SearchImage from "../../../../assets/images/svgs/search-icon.svg";
 
-// fix input consts
 const PLACEHOLDER_COLOR = "#E0E0E0";
 const IMAGE_SIZE = 18;
 
@@ -10,7 +9,7 @@ type CustomInputProp = {
 } & TextInputProps;
 
 export default function CustomInput(props: CustomInputProp) {
-  const { className } = props;
+  const { className, ...rest } = props;
 
   return (
     <View
@@ -20,7 +19,7 @@ export default function CustomInput(props: CustomInputProp) {
         <SearchImage width={IMAGE_SIZE} height={IMAGE_SIZE} />
       </View>
       <TextInput
-        placeholder="Search markets..."
+        {...rest}
         placeholderTextColor={PLACEHOLDER_COLOR}
         className="font-poppins-regular text-base text-lightGray flex-1 p-0 h-full"
         cursorColor={PLACEHOLDER_COLOR}

@@ -2,6 +2,11 @@ import { Tabs } from "expo-router";
 import React from "react";
 import { View } from "react-native";
 
+import BellImage from "../../assets/images/svgs/bell-icon.svg";
+import CharacterImage from "../../assets/images/svgs/character-image.svg";
+
+// Tab Images for both ac tive and inactive state
+import Paragraph from "@/components/common/headings/Paragraph";
 import HomeGrayImage from "../../assets/images/tab-icons/home-gary-tab.svg";
 import HomePrimaryImage from "../../assets/images/tab-icons/home-tab-primary.svg";
 import MarketsGrayImage from "../../assets/images/tab-icons/market-tab-gray.svg";
@@ -15,7 +20,7 @@ import TradePrimaryImage from "../../assets/images/tab-icons/trade-tab-primary.s
 
 // default colors for tab and size
 const activeColor = "#00E5FF";
-const inactiveColor = "#5C5C5C";
+const inactiveColor = "#283044";
 const TAB_SIZE = 20;
 
 export default function TabLayout() {
@@ -33,20 +38,42 @@ export default function TabLayout() {
           alignItems: "center",
         },
         headerTitleAlign: "left",
-
+        headerStyle: {
+          backgroundColor: "#1A1D23",
+          borderBottomWidth: 0,
+        },
         // To show the logged in person
         headerLeft: () => (
-          <View style={{ marginLeft: 16 }}>
-            <HomeGrayImage width={24} height={24} />
+          <View className="ml-3 border-2 border-primary py-1.5 px-2 rounded-full">
+            <CharacterImage width={24} height={24} />
           </View>
         ),
 
         // For recent notifications
         headerRight: () => (
           <View style={{ marginRight: 16 }}>
-            <HomeGrayImage width={24} height={24} />
+            <BellImage width={TAB_SIZE} height={TAB_SIZE} />
           </View>
         ),
+
+        //Tab bar background styling
+
+        tabBarItemStyle: {
+          marginVertical: 8,
+          marginHorizontal: 8,
+          height: 50,
+          borderRadius: 10,
+          overflow: "hidden",
+        },
+
+        tabBarStyle: {
+          backgroundColor: "#1A1D23",
+          borderTopWidth: 0,
+          height: 70,
+        },
+
+        // tabBarActiveBackgroundColor: inactiveColor,
+        tabBarActiveBackgroundColor: "#283044",
       }}
     >
       <Tabs.Screen
@@ -61,6 +88,13 @@ export default function TabLayout() {
                 <HomeGrayImage width={TAB_SIZE} height={TAB_SIZE} />
               )}
             </View>
+          ),
+          tabBarLabel: ({ focused }) => (
+            <Paragraph
+              className={`${focused ? "text-primary" : "text-lightGray"} text-xs`}
+            >
+              Home
+            </Paragraph>
           ),
         }}
       />
@@ -77,6 +111,13 @@ export default function TabLayout() {
               )}
             </View>
           ),
+          tabBarLabel: ({ focused }) => (
+            <Paragraph
+              className={`${focused ? "text-primary" : "text-lightGray"} text-xs`}
+            >
+              Market
+            </Paragraph>
+          ),
         }}
       />
       <Tabs.Screen
@@ -91,6 +132,14 @@ export default function TabLayout() {
                 <TradeGrayImage width={TAB_SIZE} height={TAB_SIZE} />
               )}
             </View>
+          ),
+
+          tabBarLabel: ({ focused }) => (
+            <Paragraph
+              className={`${focused ? "text-primary" : "text-lightGray"} text-xs`}
+            >
+              Trade
+            </Paragraph>
           ),
         }}
       />
@@ -107,6 +156,14 @@ export default function TabLayout() {
               )}
             </View>
           ),
+
+          tabBarLabel: ({ focused }) => (
+            <Paragraph
+              className={`${focused ? "text-primary" : "text-lightGray"} text-xs`}
+            >
+              Portfolio
+            </Paragraph>
+          ),
         }}
       />
       <Tabs.Screen
@@ -121,6 +178,14 @@ export default function TabLayout() {
                 <SettingsGrayImage width={TAB_SIZE} height={TAB_SIZE} />
               )}
             </View>
+          ),
+
+          tabBarLabel: ({ focused }) => (
+            <Paragraph
+              className={`${focused ? "text-primary" : "text-lightGray"} text-xs`}
+            >
+              Settings
+            </Paragraph>
           ),
         }}
       />

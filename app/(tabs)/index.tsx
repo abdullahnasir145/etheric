@@ -8,3 +8,10 @@ export default function HomeScreen() {
     </>
   );
 }
+
+// REDIRECT FOR SUPABASE AUTH FLOW
+// import { Redirect } from "expo-router";
+
+// export default function Index() {
+//   return <Redirect href="/(auth)/login" />;
+// }
