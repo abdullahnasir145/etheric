@@ -74,7 +74,7 @@ export default function HomeContainer() {
         {/* List Header */}
         <CardDescription
           title="Trending Assets"
-          btnText="See all"
+          btnText="See More"
           className="mb-5"
           onPress={handleAllLimits}
         />
