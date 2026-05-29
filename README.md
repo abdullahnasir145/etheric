@@ -1,50 +1,65 @@
-# Welcome to your Expo app 👋
+# 🪙 Etheric | Secure Crypto Mobile Wallet
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Etheric is a next-generation decentralized finance application that prioritizes user sovereignty and bleeding-edge security by replacing traditional, vulnerable password storage with local cryptographic passkeys.
 
-## Get started
+---
 
-1. Install dependencies
+## 🚀 Key Features & Architectural Security
 
-   ```bash
-   npm install
-   ```
+### 🔐 Zero-Server Cryptographic Security
 
-2. Start the app
+Unlike legacy applications that transmit and store user credentials on central servers—vulnerable to breaches and phishing—Etheric uses **hardware-bound Passkeys (WebAuthn)**.
 
-   ```bash
-   npx expo start
-   ```
+* **The Flow**: Registration generates a public-private key pair locally via the device's secure enclave (Biometrics/FaceID).
+* **Encryption**: Your private key never leaves your physical device. The Supabase server only stores the public key to verify cryptographic challenges.
+* **Result**: Zero passwords on servers means zero risk of credential leaks.
 
-In the output, you'll find options to open the app in a
+### 📱 Preview & Artifacts
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+* **Android Production Build**: [Download Etheric APK v1.0.0](https://www.google.com/search?q=https://github.com/your-username/etheric/releases)
+* **Design Language**: Driven by native-speed, fluid interfaces optimized for high-frequency trading data.
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+---
 
-## Get a fresh project
+## 🛠 Tech Stack
 
-When you're ready, run:
+* **Framework**: [Expo](https://expo.dev/) (React Native) with File-based Routing (`expo-router`)
+* **Styling**: [NativeWind](https://www.nativewind.dev/) (Tailwind CSS for React Native)
+* **UI Components**: Inspired by [HeroUI](https://www.heroui.com/) concepts, adapted for fluid mobile experiences
+* **Backend & Auth**: [Supabase](https://supabase.com/) (Database triggers, Row Level Security, and secure OAuth providers)
+
+---
+
+## ⚙️ Quick Start
+
+### 1. Prerequisites & Environment Setup
+
+Clone the repository and create an `.env` file in the root directory:
 
 ```bash
-npm run reset-project
+EXPO_PUBLIC_SUPABASE_URL=your_supabase_project_url
+EXPO_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+### 2. Installation
 
-## Learn more
+Install the native dependencies and project packages:
 
-To learn more about developing your project with Expo, look at the following resources:
+```bash
+npm install
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+```
 
-## Join the community
+### 3. Development Execution
 
-Join our community of developers creating universal apps.
+Launch the Expo development server to test on your device or an emulator:
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+```bash
+npx expo start
+
+```
+
+* Press `a` for Android Emulator.
+* Press `i` for iOS Simulator.
+* Scan the QR code using the **Expo Go** app or a development build to run on physical hardware.
