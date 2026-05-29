@@ -1,10 +1,10 @@
 import { ReactNode } from "react";
-import { Text } from "react-native";
+import { Text, TextProps } from "react-native";
 
 type ParagraphProps = {
   className?: any;
   children?: ReactNode;
-};
+} & TextProps;
 
 export default function Paragraph(props: ParagraphProps) {
   const { className, children, ...rest } = props;

@@ -1,54 +1,48 @@
+import Heading2 from "@/components/common/headings/Heading2";
 import Paragraph from "@/components/common/headings/Paragraph";
+import { HomeScreenCardProps } from "@/utils/Types";
 import React from "react";
-import { Image, View } from "react-native";
-import Heading3 from "../../../headings/Heading3";
+import { Image, Pressable, View } from "react-native";
 
-export default function HomeScreenCard({ coin }: { coin: any }) {
-  const { image, name, symbol, price, change, isPositive } = coin || {};
+export default function HomeScreenCard({ data }: HomeScreenCardProps) {
+  const { image, name, symbol, price, change, isPositive, priceChange } =
+    data || {};
 
   return (
-    <View className="flex-row items-center justify-between bg-lightPurple p-4 rounded-lg mb-3 border border-white/5">
-      <View className="flex-row items-center flex-1">
-        <View className="w-12 h-12 rounded-full bg-white/10 items-center justify-center">
-          <Image
-            source={{
-              uri: image || "https://cryptologos.cc/logos/bitcoin-btc-logo.png",
-            }}
-            className="w-8 h-8"
-            resizeMode="contain"
-          />
-        </View>
-        <View className="ml-3">
-          <Heading3 className="text-white text-base">{name}</Heading3>
-          <Paragraph className=" text-lightGray text-xs uppercase">
-            {symbol}
-          </Paragraph>
-        </View>
-      </View>
+    <Pressable
+      // onPress={onPress}
+      className="flex-row items-center justify-between p-4 mb-3 rounded-lg bg-lightPurple"
+    >
+      <View className="flex-row items-center flex-1 mr-2">
+        <Image source={{ uri: image }} className="w-10 h-10" />
 
-      {/* Middle Section: Simplified Sparkline Chart */}
-      <View className="flex-1 items-center justify-center h-10 px-2">
-        {/* Replace this View with your actual Chart component */}
-        <View
-          className={`h-[2px] w-full ${isPositive ? "bg-emerald-500" : "bg-rose-500"} opacity-50`}
-        />
-      </View>
-
-      {/* Right Section: Price and Percentage */}
-      <View className="items-end flex-1">
-        <Paragraph className="text-white font-poppins-bold text-base">
-          ${price}
-        </Paragraph>
-        <View
-          className={`mt-1 px-2 py-1 rounded-lg ${isPositive ? "bg-emerald-500/10" : "bg-rose-500/10"}`}
-        >
+        <View className="ml-3 flex-1">
           <Paragraph
-            className={`font-poppins-semibold text-xs ${isPositive ? "text-emerald-500" : "text-rose-500"}`}
+            className="text-white"
+            numberOfLines={1}
+            ellipsizeMode="tail"
           >
-            {isPositive ? "▲" : "▼"} {change}%
+            {name}
           </Paragraph>
+          <View className="flex-row items-center">
+            <Paragraph className="text-gray-400 uppercase text-xs">
+              {symbol}
+            </Paragraph>
+            <Paragraph className="text-red-500 text-xs ml-2" numberOfLines={1}>
+              {priceChange}
+            </Paragraph>
+          </View>
         </View>
       </View>
-    </View>
+
+      {/* Price and percentage of coin */}
+      <View className="items-end">
+        <Heading2 className="text-white">${price}</Heading2>
+        <Paragraph className={isPositive ? "text-secondary" : "text-terniary"}>
+          {isPositive ? "+" : ""}
+          {change}%
+        </Paragraph>
+      </View>
+    </Pressable>
   );
 }

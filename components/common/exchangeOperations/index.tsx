@@ -19,12 +19,12 @@ export default function HomeExchangeOperations(props: HomeOperationsProp) {
         <>
           <View
             className={`py-3 px-3 rounded-xl mb-2 items-center justify-center ${
-              pressed ? "bg-primary" : "bg-lightPurple"
+              pressed ? "bg-darkPurple" : "bg-lightPurple"
             }`}
           >
             {image && <Icon width={ICON_SIZE} height={ICON_SIZE} />}
           </View>
-          <Paragraph className="text-white/80 uppercase">{title}</Paragraph>
+          <Paragraph className="text-white uppercase">{title}</Paragraph>
         </>
       )}
     </Pressable>
