@@ -5,6 +5,11 @@ export interface CoinData {
   image: string;
   current_price: number;
   price_change_percentage_24h: number;
+  sparkline_in_7d?: { price: number[] };
+  sparkline?: { price?: number[] };
+  total_volume?: number;
+  market_cap?: number;
+  market_cap_rank?: number;
 }
 
 export interface CoinItem {
@@ -14,7 +19,7 @@ export interface CoinItem {
   price: string | number;
   change: string | number;
   isPositive: boolean;
-  priceChange?: number;
+  sparklinePrices?: number[];
 }
 
 export interface HomeScreenCardProps {

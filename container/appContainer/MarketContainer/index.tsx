@@ -1,4 +1,4 @@
-import HomeScreenCard from "@/components/common/cards/homeScreen/homeScreenCard";
+import CryptoDetailedCard from "@/components/common/cards/CryptoDetailedCard";
 import Container from "@/components/common/Container";
 import DataStateWrapper from "@/components/common/DataStateWrapper";
 import CustomInput from "@/components/common/inputs/CustomInput";
@@ -10,7 +10,6 @@ import { FlatList, ListRenderItem, View } from "react-native";
 export default function MarketContainer() {
   const [searchQuery, setSearchQuery] = useState("");
   const { data, isLoading, isError } = useGetTrendingCoins();
-  console.log("Status:", { isLoading, isError, hasData: !!data });
 
   const filteredData = useMemo(() => {
     if (!data) return [];
@@ -21,21 +20,11 @@ export default function MarketContainer() {
       )
       .slice(0, 100);
   }, [data, searchQuery]);
-  // console.log(filteredData);
 
   const renderItem: ListRenderItem<CoinData> = ({ item }) => (
-    <HomeScreenCard
-      id={item.id}
-      data={{
-        name: item.name,
-        symbol: item.symbol.toUpperCase(),
-        price: item.current_price.toLocaleString(),
-        change: item.price_change_percentage_24h?.toFixed(2) || "0.00",
-        isPositive: item.price_change_percentage_24h > 0,
-        image: item.image,
-      }}
-    />
+    <CryptoDetailedCard data={item} />
   );
+
   return (
     <View className="bg-appBg flex-1">
       <Container className="flex-1">
@@ -45,11 +34,6 @@ export default function MarketContainer() {
             onChangeText={(text: string) => setSearchQuery(text)}
             placeholder="Search coins..."
           />
-          {/* <View className="my-4">
-            <MarketCapRank />
-          </View> */}
-
-          {/* Rendering the List of Coins */}
         </View>
 
         <View className="mb-4 flex-1">

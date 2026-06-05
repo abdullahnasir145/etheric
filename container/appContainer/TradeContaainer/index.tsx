@@ -1,6 +1,6 @@
 import PrimaryButton from "@/components/common/buttons/PrimaryButton";
 import TradeDialPad from "@/components/common/TradePad";
-import { useGetCoinSimplePrice } from "@/data/coins";
+import { useGetCoinSimplePrice } from "@/hooks/useQueryHook";
 import React, { useMemo, useState } from "react";
 import { Alert, Text, TouchableOpacity, View } from "react-native";
 

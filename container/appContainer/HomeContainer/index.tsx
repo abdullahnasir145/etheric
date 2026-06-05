@@ -38,6 +38,7 @@ export default function HomeContainer() {
         change: item.price_change_percentage_24h?.toFixed(2) || "0.00",
         isPositive: item.price_change_percentage_24h > 0,
         image: item.image,
+        sparklinePrices: item.sparkline_in_7d?.price,
       }}
     />
   );
