@@ -56,10 +56,10 @@ export default function SupportModal({ visible, onClose }: SupportModalProps) {
               <Paragraph className="text-gray-400 mb-2">Message us</Paragraph>
               <TextInput
                 placeholder="Type your message..."
-                placeholderTextColor="#6B7280"
+                placeholderTextColor="#fff"
                 multiline
                 numberOfLines={4}
-                className="bg-white/5 rounded-2xl px-4 py-3 text-white border border-white/10 h-32"
+                className="bg-white/5 rounded-2xl  text-white border border-white/10  px-2 pt-3 text-sm font-poppins-regular pb-10"
               />
             </View>
 
