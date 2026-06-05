@@ -1,50 +1,48 @@
-# Welcome to your Expo app 👋
+🪙 Etheric | Secure Crypto Mobile Wallet
+Etheric is a next-generation decentralized finance application that prioritizes user sovereignty and bleeding-edge security by replacing traditional, vulnerable password storage with local cryptographic passkeys.
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+🚀 Key Features & Architectural Security
+🔐 Zero-Server Cryptographic Security
+Unlike legacy applications that transmit and store user credentials on central servers—vulnerable to breaches and phishing—Etheric uses hardware-bound Passkeys (WebAuthn).
 
-## Get started
+The Flow: Registration generates a public-private key pair locally via the device's secure enclave (Biometrics/FaceID).
 
-1. Install dependencies
+Encryption: Your private key never leaves your physical device. The Supabase server only stores the public key to verify cryptographic challenges.
 
-   ```bash
-   npm install
-   ```
+Result: Zero passwords on servers means zero risk of credential leaks.
 
-2. Start the app
+📱 Preview & Artifacts
+Android Production Build: Download Etheric APK v1.0.0
 
-   ```bash
-   npx expo start
-   ```
+Design Language: Driven by native-speed, fluid interfaces optimized for high-frequency trading data.
 
-In the output, you'll find options to open the app in a
+🛠 Tech Stack
+Framework: Expo (React Native) with File-based Routing (expo-router)
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+Styling: NativeWind (Tailwind CSS for React Native)
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+UI Components: Inspired by HeroUI concepts, adapted for fluid mobile experiences
 
-## Get a fresh project
+Backend & Auth: Supabase (Database triggers, Row Level Security, and secure OAuth providers)
 
-When you're ready, run:
+⚙️ Quick Start
 
-```bash
-npm run reset-project
-```
+1. Prerequisites & Environment Setup
+   Clone the repository and create an .env file in the root directory:
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+Bash
+EXPO_PUBLIC_SUPABASE_URL=your_supabase_project_url
+EXPO_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key 2. Installation
+Install the native dependencies and project packages:
 
-## Learn more
+Bash
+npm install 3. Development Execution
+Launch the Expo development server to test on your device or an emulator:
 
-To learn more about developing your project with Expo, look at the following resources:
+Bash
+npx expo start
+Press a for Android Emulator.
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+Press i for iOS Simulator.
 
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Scan the QR code using the Expo Go app or a development build to run on physical hardware.
