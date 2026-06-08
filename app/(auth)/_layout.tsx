@@ -7,7 +7,7 @@ export default function AuthLayout() {
   return (
     <Stack
       screenOptions={{
-        headerShown: true,
+        headerShown: false,
         headerTitle: "",
         headerTitleStyle: {
           fontFamily: "Poppins_700Bold",

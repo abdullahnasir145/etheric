@@ -29,7 +29,7 @@ export default function SecondaryButton(props: PrimaryButtonProp) {
         <Heading3 className="text-white text-xl font-poppins-semibold">
           {title}
         </Heading3>
-        {Icon && <Icon size={20} color="#5c5c5c" />}
+        {Icon && <Icon size={20} color="#E0E0E0" />}
       </LinearGradient>
     </TouchableOpacity>
   );

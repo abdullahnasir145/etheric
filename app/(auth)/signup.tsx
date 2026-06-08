@@ -1,10 +1,9 @@
-import Paragraph from "@/components/common/headings/Paragraph";
-import { View } from "react-native";
+import SignUpContainer from "@/container/authContainer/SignupContainer";
 
 export default function SignUpPage() {
   return (
-    <View>
-      <Paragraph>hello</Paragraph>
-    </View>
+    <>
+      <SignUpContainer />
+    </>
   );
 }
