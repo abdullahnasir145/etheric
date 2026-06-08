@@ -6,4 +6,8 @@ export const ROUTE_LIST = {
   MARKETS_SCREEN: "/markets",
   HOME_SCREEN: "/",
   MODAL_SCREEN: "/modal",
+
+  // Auth Pages //
+  LOGIN_SCREEN: "/login",
+  SIGNUP_SCREEN: "/signup",
 } as const;
