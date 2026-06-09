@@ -1,14 +1,13 @@
 import React from "react";
-import { View } from "react-native";
-import Paragraph from "../headings/Paragraph";
+import { Text, View } from "react-native";
 
-export default function OrDivider() {
+export default function OrDivider({ title }: { title: string }) {
   return (
     <View className="flex-row items-center my-6 w-full">
       <View className="flex-1 h-[1px] bg-darkPurple" />
-      <Paragraph className="mx-4 text-Gray font-poppins-bold text-xs tracking-widest">
-        OR
-      </Paragraph>
+      <Text className="mx-4 text-white font-poppins-semibold text-xs tracking-widest uppercase">
+        {title}
+      </Text>
       <View className="flex-1 h-[1px] bg-darkPurple" />
     </View>
   );

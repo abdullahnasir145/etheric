@@ -1,18 +1,21 @@
 import AuthFooter from "@/components/common/AuthPagesRedirect";
-import PrimaryButton from "@/components/common/buttons/PrimaryButton";
 import SecondaryButton from "@/components/common/buttons/SecondaryButton";
 import Container from "@/components/common/Container";
 import AuthHeader from "@/components/common/header/AuthHeader";
+import Heading2 from "@/components/common/headings/Heading2";
+import Heading3 from "@/components/common/headings/Heading3";
+import Paragraph from "@/components/common/headings/Paragraph";
+import OAuthButtons from "@/components/common/OAuth";
 import OrDivider from "@/components/common/OrDivider";
 import { ROUTE_LIST } from "@/constants";
 import { loginSchema } from "@/utils/Types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
 import { router } from "expo-router";
-import { ArrowRight, Lock, Mail } from "lucide-react-native";
+import { ArrowRight, Fingerprint, Lock, Mail } from "lucide-react-native";
 import React from "react";
 import { useForm } from "react-hook-form";
-import { Text, View } from "react-native";
+import { TouchableOpacity, View } from "react-native";
 import { z } from "zod";
 import FormInput from "../../../components/common/inputs/FormInput";
 
@@ -43,73 +46,103 @@ export default function LoginContainer() {
     onSuccess: (data) => console.log("Logged In:", data),
   });
 
-  // navigation for signIn screen
+  // function to signup on home screen
+
+  const handleHomeScreenNav = () => {
+    return (
+      handleSubmit((data) => mutation.mutate(data)),
+      router.replace(ROUTE_LIST.HOME_SCREEN)
+    );
+  };
+
+  // function to navigate for auth pages
   const handleSignUpScreenNav = () => {
     router.replace(ROUTE_LIST.SIGNUP_SCREEN);
   };
+
   return (
     <View className="flex-1 justify-center bg-appBg">
       <Container>
-        {/* Header Block */}
+        {/*  Login Header */}
         <AuthHeader
-          title="Etheric"
-          description="Log in to manage your account and settings."
+          title="welcome back"
+          description="sign in to your secure workspace and resume tracking with etheric."
         />
-
-        {/* Input Fields Block with structural vertical spacing */}
+        {/*  Input Fields  */}
         <View className="gap-y-4 w-full">
           <FormInput
             Icon={Mail}
             control={control}
             name="email"
-            placeholder="Email Address..."
+            placeholder="email address"
             keyboardType="email-address"
             autoCapitalize="none"
             error={errors.email?.message}
           />
-
           <FormInput
             Icon={Lock}
             control={control}
             name="password"
-            placeholder="Password"
+            placeholder="password"
             secureTextEntry
             error={errors.password?.message}
           />
         </View>
 
+        {/*  Forgot Password  */}
+        <TouchableOpacity
+          className="self-end mt-2"
+          onPress={() => console.log("Forgot password")}
+        >
+          <Paragraph className="text-sm text-primary">
+            forgot password?
+          </Paragraph>
+        </TouchableOpacity>
+
+        {/*  Error Message  */}
         {mutation.isError && (
-          <Text className="text-terniary text-sm mt-3 text-center font-poppins-medium">
-            {/* {mutation.error.message} */}
-            Connection to serrver is next phase, stay tuned! (This is a
-            placeholder error message)
-          </Text>
+          <Heading3 className="text-terniary text-sm mt-3 text-center">
+            Connection to server is next phase, stay tuned!
+          </Heading3>
         )}
 
-        {/* Primary Action Button (Linked up to Form Submit) */}
+        {/*  Sign In Button  */}
         <SecondaryButton
-          title={mutation.isPending ? "Signing In..." : "Sign In"}
+          title={mutation.isPending ? "signing in..." : "sign in"}
           Icon={mutation.isPending ? undefined : ArrowRight}
-          onPress={handleSubmit((data) => mutation.mutate(data))}
-          className="mt-8 w-full"
+          onPress={handleHomeScreenNav}
+          className="mt-6 w-full"
         />
 
-        {/* Divider Separation Block */}
-        <OrDivider />
+        {/* Spacer */}
+        <View className="h-2" />
 
-        {/* Secondary Authentication Block */}
-        <PrimaryButton
-          title="Sign in with Google"
-          className="w-full"
-          onPress={() => console.log("Google Auth")}
+        {/*  Passkey Button  */}
+        <TouchableOpacity
+          onPress={() => console.log("Passkey Auth")}
+          className="w-full flex-row items-center justify-center gap-x-2 py-4 rounded-xl border border-primary bg-transparent active:bg-[#00E5FF]/10"
+        >
+          <Fingerprint size={20} color="#00E5FF" />
+          <Heading2 className="text-primary text-base  uppercase tracking-wider">
+            continue with passkey
+          </Heading2>
+        </TouchableOpacity>
+
+        {/* ── OAuth Divider ── */}
+        <OrDivider title="or connect with" />
+
+        {/* ── OAuth Buttons Row ── */}
+        <OAuthButtons
+          onGooglePress={() => console.log("Google Auth")}
+          onApplePress={() => console.log("Apple Auth")}
+          onGitHubPress={() => console.log("GitHub Auth")}
         />
 
-        {/* Create Account Link Footer */}
-
+        {/* ── Footer ── */}
         <AuthFooter
           onPress={handleSignUpScreenNav}
-          message="Don't have an account?"
-          actionText="Sign In"
+          message="don't have an account?"
+          actionText="sign up"
         />
       </Container>
     </View>
