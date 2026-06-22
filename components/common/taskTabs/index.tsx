@@ -16,7 +16,7 @@ export default function TabSwitcher({
       <Pressable
         onPress={() => onTabChange("active")}
         className={`flex-1 items-center py-3 rounded-xl transition-all ${
-          currentTab === "active" ? "bg-red-500" : "bg-red-500"
+          currentTab === "active" ? "bg-appBg" : "bg-transparent"
         }`}
       >
         <Paragraph

@@ -12,3 +12,11 @@ timestamp,
 value: price,
 }));
 };
+
+<!-- For line graph the pacakages by priority -->
+
+npm i react-native-gifted-charts
+npm i react-native-chart-kit
+
+<!-- Tasks  -->
+<!-- coin nested screen -->

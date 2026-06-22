@@ -9,7 +9,7 @@ type Heading2Prop = {
 export default function Heading2(props: Heading2Prop) {
   const { className, children, ...rest } = props;
   return (
-    <Text className={`text-black font-poppins-regular ${className}`} {...rest}>
+    <Text className={`text-black font-poppins-semibold ${className}`} {...rest}>
       {children}
     </Text>
   );

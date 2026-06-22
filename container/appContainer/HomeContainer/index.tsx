@@ -16,42 +16,40 @@ import { HOME_OPERATION_DATA } from "@/data/home";
 import { useGetTrendingCoins } from "@/hooks/useQueryHook";
 import { CoinData } from "@/utils/Types";
 
-// api to get the coin details
-const COIN_API = process.env.EXPO_PUBLIC_COINGECKO_API;
+// handle navigation for coin detail page
 
 export default function HomeContainer() {
   const router = useRouter();
-  // limit
   const [limitLists, setLimitLists] = useState(4);
 
   // Fetching Data with explicit CoinData type
   const { data, isLoading, isError } = useGetTrendingCoins();
 
-  // RenderItem using the API type (CoinData) to map to UI structure
+  // RenderItem using the API type  to map to UI structure
   const renderItem: ListRenderItem<CoinData> = ({ item }) => (
     <HomeScreenCard
-      id={item.id}
       data={{
+        id: item.id,
         name: item.name,
-        symbol: item.symbol.toUpperCase(),
-        price: item.current_price.toLocaleString(),
-        change: item.price_change_percentage_24h?.toFixed(2) || "0.00",
-        isPositive: item.price_change_percentage_24h > 0,
+        symbol: item.symbol?.toUpperCase(),
+        price: item.current_price, // Pass raw number
+        change: item.price_change_percentage_24h, // Pass raw number safely
+        isPositive: (item.price_change_percentage_24h ?? 0) > 0,
         image: item.image,
         sparklinePrices: item.sparkline_in_7d?.price,
+        onPress: () => router.push(`/coindetail?id=${item.id}`),
       }}
     />
   );
 
   // To see all the lists
   const handleAllLimits = () => {
-    setLimitLists(14);
+    setLimitLists((prev) => (prev === 4 ? 14 : 4));
   };
 
-  // Route navigation for the HomeOperation
   // Navigation for Trade Tab
   const handleTradeTabNavigation = () => {
-    router.replace(ROUTE_LIST?.TRADE_SCREEN);
+    router.navigate(ROUTE_LIST?.TRADE_SCREEN);
   };
 
   return (
@@ -75,7 +73,7 @@ export default function HomeContainer() {
         {/* List Header */}
         <CardDescription
           title="Trending Assets"
-          btnText="See More"
+          btnText={limitLists === 4 ? "See All" : "See Less"}
           className="mb-5"
           onPress={handleAllLimits}
         />
@@ -87,6 +85,7 @@ export default function HomeContainer() {
             keyExtractor={(item) => item.id.toString()}
             renderItem={renderItem}
             contentContainerStyle={{ paddingBottom: 20 }}
+            showsVerticalScrollIndicator={false}
           />
         </DataStateWrapper>
       </Container>

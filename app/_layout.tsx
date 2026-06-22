@@ -45,9 +45,54 @@ export default function RootLayout() {
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-        <Stack>
-          <Stack.Screen name="onboarding" options={{ headerShown: false }} />
-          <Stack.Screen name="(auth)" options={{ headerShown: false }} />
+        <Stack
+          screenOptions={{
+            headerShown: true,
+            headerTitle: "ETHERIC",
+            headerTitleStyle: {
+              fontFamily: "Poppins_700Bold",
+              fontSize: 18,
+            },
+            headerTitleAlign: "left",
+            headerStyle: {
+              backgroundColor: "#1A1D23",
+            },
+            // To show the logged in person
+            // headerLeft: () => (
+            //   <View className="ml-3 border-2 border-primary py-1.5 px-2 rounded-full">
+            //     <CharacterImage width={24} height={24} />
+            //   </View>
+            // ),
+
+            // For recent notifications
+            // headerRight: () => (
+            //   <View style={{ marginRight: 16 }}>
+            //     <BellImage width={TAB_SIZE} height={TAB_SIZE} />
+            //   </View>
+            // ),
+
+            //Tab bar background styling
+
+            // tabBarItemStyle: {
+            //   marginVertical: 8,
+            //   marginHorizontal: 8,
+            //   height: 50,
+            //   borderRadius: 10,
+            //   overflow: "hidden",
+            // },
+
+            // tabBarStyle: {
+            //   backgroundColor: "#1A1D23",
+            //   borderTopWidth: 0,
+            //   height: 70,
+            // },
+
+            // tabBarActiveBackgroundColor: inactiveColor,
+            // tabBarActiveBackgroundColor: "#283044",
+          }}
+        >
+          {/* <Stack.Screen name="onboarding" options={{ headerShown: false }} /> */}
+          {/* <Stack.Screen name="(auth)" options={{ headerShown: false }} /> */}
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
           <Stack.Screen name="modal" options={{ presentation: "modal" }} />
         </Stack>

@@ -15,6 +15,7 @@ export interface CoinData {
 }
 
 export interface CoinItem {
+  id: string;
   image: string;
   name: string;
   symbol: string;
@@ -22,11 +23,13 @@ export interface CoinItem {
   change: string | number;
   isPositive: boolean;
   sparklinePrices?: number[];
+  onPress?: () => void;
 }
 
 export interface HomeScreenCardProps {
   data: CoinItem;
   id?: string;
+  onPress?: () => void;
 }
 
 // Auth Form zod schema //
