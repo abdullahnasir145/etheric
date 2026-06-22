@@ -1,8 +1,8 @@
 import AuthFooter from "@/components/common/AuthPagesRedirect";
-import PrimaryButton from "@/components/common/buttons/PrimaryButton";
 import SecondaryButton from "@/components/common/buttons/SecondaryButton";
 import Container from "@/components/common/Container";
 import AuthHeader from "@/components/common/header/AuthHeader";
+import OAuthButtons from "@/components/common/OAuth";
 import OrDivider from "@/components/common/OrDivider";
 import { ROUTE_LIST } from "@/constants";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -55,19 +55,19 @@ export default function SignUpContainer() {
   return (
     <View className="flex-1 justify-center bg-appBg">
       <Container>
-        {/* Header Block */}
+        {/* Header */}
         <AuthHeader
-          title="Create Account"
-          description="Sign up to get started tracking crypto with Etheric."
+          title="create account"
+          description="sign up to get started tracking crypto with etheric."
         />
 
-        {/* Input Fields Block */}
+        {/*  Input Fields  */}
         <View className="gap-y-4 w-full">
           <FormInput
             Icon={User}
             control={control}
             name="name"
-            placeholder="Full Name..."
+            placeholder="full name"
             autoCapitalize="words"
             error={errors.name?.message}
           />
@@ -76,7 +76,7 @@ export default function SignUpContainer() {
             Icon={Mail}
             control={control}
             name="email"
-            placeholder="Email Address..."
+            placeholder="email address"
             keyboardType="email-address"
             autoCapitalize="none"
             error={errors.email?.message}
@@ -86,41 +86,45 @@ export default function SignUpContainer() {
             Icon={Lock}
             control={control}
             name="password"
-            placeholder="Password"
+            placeholder="password"
             secureTextEntry
             error={errors.password?.message}
           />
         </View>
 
+        {/*  Error Message  */}
         {mutation.isError && (
-          <Text className="text-terniary text-sm mt-3 text-center font-poppins-medium">
+          <Text
+            aria-role="paragraph"
+            className="text-terniary text-sm mt-3 text-center font-poppins-medium"
+          >
             Connection to server is next phase, stay tuned!
           </Text>
         )}
 
-        {/* Primary Action Button */}
+        {/* ── Primary Action Button ── */}
         <SecondaryButton
-          title={mutation.isPending ? "Creating Account..." : "Sign Up"}
+          title={mutation.isPending ? "creating account..." : "sign up"}
           Icon={mutation.isPending ? undefined : ArrowRight}
           onPress={handleSubmit((data) => mutation.mutate(data))}
           className="mt-8 w-full"
         />
 
-        {/* Divider Separation Block */}
-        <OrDivider />
+        {/* ── OAuth Divider ── */}
+        <OrDivider title="or connect with" />
 
-        {/* Secondary Authentication Block */}
-        <PrimaryButton
-          title="Sign up with Google"
-          className="w-full"
-          onPress={() => console.log("Google Auth Signup")}
+        {/* ── OAuth Buttons Row ── */}
+        <OAuthButtons
+          onGooglePress={() => console.log("Google Auth")}
+          onApplePress={() => console.log("Apple Auth")}
+          onGitHubPress={() => console.log("GitHub Auth")}
         />
 
-        {/* Redirect Footer */}
+        {/* ── Redirect Footer ── */}
         <AuthFooter
           onPress={handleSignInScreenNav}
-          message="Already have an account?"
-          actionText="Log In"
+          message="already have an account?"
+          actionText="log in"
         />
       </Container>
     </View>

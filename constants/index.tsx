@@ -10,4 +10,8 @@ export const ROUTE_LIST = {
   // Auth Pages //
   LOGIN_SCREEN: "/login",
   SIGNUP_SCREEN: "/signup",
+
+  // Nested Screens //
+  // -- task creation screen -- //
+  TASKCREATION_SCREEN: "/taskCreation",
 } as const;

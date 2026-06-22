@@ -1,9 +1,8 @@
 import Heading2 from "@/components/common/headings/Heading2";
-import Heading3 from "@/components/common/headings/Heading3";
 import Paragraph from "@/components/common/headings/Paragraph";
 import { CoinData } from "@/utils/Types";
 import React from "react";
-import { Image, View, Text } from "react-native";
+import { Image, Text, View } from "react-native";
 import Svg, { Polyline } from "react-native-svg";
 
 type CryptoDetailedCardProps = {
@@ -11,7 +10,10 @@ type CryptoDetailedCardProps = {
   onPress?: () => void;
 };
 
-export default function CryptoDetailedCard({ data, onPress }: CryptoDetailedCardProps) {
+export default function CryptoDetailedCard({
+  data,
+  onPress,
+}: CryptoDetailedCardProps) {
   const {
     image,
     name,
@@ -81,21 +83,25 @@ export default function CryptoDetailedCard({ data, onPress }: CryptoDetailedCard
             }`}
           >
             {isPositive ? "+" : ""}
-            {price_change_percentage_24h.toFixed(2)}%
+            {price_change_percentage_24h?.toFixed(2) || "0.00"}%
           </Paragraph>
         </View>
       </View>
 
       <View className="flex-row justify-between mt-4 pt-3 border-t border-white/5">
         <View className="items-center">
-          <Paragraph className="text-gray-500 text-xs mb-1">24h Volume</Paragraph>
+          <Paragraph className="text-gray-500 text-xs mb-1">
+            24h Volume
+          </Paragraph>
           <Text className="text-white font-poppins-semibold text-sm">
             ${(data as any).total_volume?.toLocaleString() || "N/A"}
           </Text>
         </View>
 
         <View className="items-center">
-          <Paragraph className="text-gray-500 text-xs mb-1">Market Cap</Paragraph>
+          <Paragraph className="text-gray-500 text-xs mb-1">
+            Market Cap
+          </Paragraph>
           <Text className="text-white font-poppins-semibold text-sm">
             ${(data as any).market_cap?.toLocaleString() || "N/A"}
           </Text>
